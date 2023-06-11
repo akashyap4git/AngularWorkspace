@@ -1,21 +1,127 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Search City" name="city" [(ngModel)]="cityName">
+  </form>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container" *ngIf="weatherData">
+<div class="upper-data">
+<img src="../assets/summer_image.jpg" *ngIf="weatherData.main.temp > 15">
+<img src="../assets/night_image.jpg" *ngIf="weatherData.main.temp <=15">
+
+<div class="weather-data">
+  <div class="location">{{ weatherData.name }}</div>
+  <div class="temperature">{{ weatherData.main.temp | number: '1.0-0' }}°C</div>
+</div>
+  </div>
+  <div class="lower-data">
+    <div class="more-info-label">
+      More Informtion
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/min_temp.webp">
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          {{ weatherData.main.temp_min | number: '1.0-0' }}°C
+        </div>
+      </div>
+
+       <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/max_temp.avif">
+          <span>max</span>
+        </div>
+        <div class="info-block-value">
+          {{ weatherData.main.temp_min | number: '1.0-0' }}°C
+        </div>
+       </div>
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/humidity.jpg">
+            <span>humidity</span>
+          </div>
+          <div class="info-block-value">
+            {{ weatherData.main.humidity }}%
+          </div>
+        </div>
+          <div class="info-block">
+            <div class="info-block-label">
+              <img src="../assets/wind.jpg">
+              <span>wind</span>
+            </div>
+            <div class="info-block-value">
+              {{ weatherData.wind.speed }} km/hr
+            </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="container">
+  <div class="upper-data">
+<img src="../assets/summer_image.jpg">
+<img src="../assets/night_image.jpg">
+
+<div class="weather-data">
+  <div class="location">Wellington</div>
+  <div class="temperature">{{14.40 | number: '1.0-0'}}°C</div>
+</div>
+  </div>
+  <div class="lower-data">
+    <div class="more-info-label">
+      More Informtion
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/min_temp.webp">
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          10°C 
+        </div>
+      </div>
+
+       <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/max_temp.avif">
+          <span>max</span>
+        </div>
+        <div class="info-block-value">
+          20°C 
+        </div>
+       </div>
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/humidity.jpg">
+            <span>humidity</span>
+          </div>
+          <div class="info-block-value">
+            77%
+          </div>
+        </div>
+          <div class="info-block">
+            <div class="info-block-label">
+              <img src="../assets/wind.jpg">
+              <span>wind</span>
+            </div>
+            <div class="info-block-value">
+              11 km/hr
+            </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+ -->
 
 <router-outlet></router-outlet>
